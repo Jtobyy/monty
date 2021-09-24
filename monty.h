@@ -47,6 +47,7 @@ void free_stack_t(stack_t *head);
 int print_stack_t(stack_t *h);
 int get_op_int(char *semi_buf);
 char *get_opcode(char *semi_buf);
+void pint(stack_t *stack_head);
 
 extern int line_no;
 extern stack_t *stack_head;

@@ -70,6 +70,13 @@ free(semi_buf);
 free(opcode);
 continue;
 }
+else if (strncmp(opcode, "pint", 4) == 0)
+{
+pint(stack_head);
+free(semi_buf);
+free(opcode);
+continue;
+}
 else if (strncmp(opcode, "push", 4) == 0)
 {
 /* get int(if any) for each line from file */
@@ -189,55 +196,3 @@ return (n);
 }
 return (-1);
 }
-
-
-/**
- *push - adds a node to the beginning of the stack
- *@stack_head: address of stack's head
- *@n: value at node
- *Return: void
- */
-void push(stack_t **stack_head, int n)
-{
-int r __attribute__((unused));
-stack_t *lp;
-lp = malloc(sizeof(*lp));
-if (lp == NULL)
-{
-fprintf(stderr, "Error: malloc failed");
-exit(96);
-}
-lp->n = n;
-lp->next = *stack_head;
-lp->prev = NULL;
-if (*stack_head == NULL)
-*stack_head = lp;
-else
-{
-(*stack_head)->prev = lp;
-*stack_head = lp;
-}
-return;
-}
-
-/**
- *pall - prints out all elements in the stack
- *@stack_head: address of the head of the stack
- *Return: void
- */
-void pall(stack_t *stack_head)
-{
-stack_t *lp;
-if (stack_head == NULL)
-return;
-lp = stack_head;
-while (stack_head != NULL)
-{
-stack_head = lp->next;
-printf("%d\n", lp->n);
-lp = stack_head;
-}
-return;
-}
-
-
