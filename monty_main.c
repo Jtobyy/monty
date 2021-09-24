@@ -28,7 +28,7 @@ c = close(f);
 if (c == -1)
 {
 fprintf(stderr, "Error: Can't close file %s\n", monty_file);
-exit(98);
+exit(EXIT_FAILURE);
 }
 return (0);
 }
