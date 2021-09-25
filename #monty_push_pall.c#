@@ -1,8 +1,5 @@
 #include "monty.h"
 
-int line_no = 1;
-stack_t *stack_head = NULL;
-
 /**
  * pp - extracts instructions from file
  *@fd: file descriptor of file
@@ -16,9 +13,11 @@ int k;
 int n;
 int fd_count;
 ssize_t r;
+int line_no = 1;
 char *buf = NULL;
 char *semi_buf = NULL;
 char *opcode = NULL;
+stack_t *stack_head = NULL;
 fd_count = 0;
 buf = malloc(sizeof(*buf) * 500);
 if (buf == NULL)
@@ -63,22 +62,15 @@ semi_buf[k] = '\n';
 
 /* get opcode for each line from file */
 opcode = get_opcode(semi_buf);
-
-if (strcmp(opcode, "pall") == 0)
+ 
+if (strncmp(opcode, "pall", 4) == 0)
 {
 pall(stack_head);
 free(semi_buf);
 free(opcode);
 continue;
 }
-else if (strcmp(opcode, "pint") == 0)
-{
-pint(stack_head);
-free(semi_buf);
-free(opcode);
-continue;
-}
-else if (strcmp(opcode, "push") == 0)
+else if (strncmp(opcode, "push", 4) == 0)
 {
 /* get int(if any) for each line from file */
 n = get_op_int(semi_buf);
@@ -91,9 +83,11 @@ free_stack_t(stack_head);
 fprintf(stderr, "L%d: usage: push integer\n", line_no);
 exit(EXIT_FAILURE); 
 }
+push(&stack_head, n);
 free(semi_buf);
 free(opcode);
 }
+else if (strncmp(opcode, "pint", 4) == 0)
 else
 {
 free(buf);
@@ -144,7 +138,6 @@ opcode[t] = semi_buf[k];
 t++;
 k++;
 }
-opcode[t] = '\0';
 break;
 }
 return (opcode);
@@ -162,11 +155,12 @@ int k;
 int t;
 int tmp;
 char *op_int;
-n = -1;
-for (k = 0; semi_buf[k] != '\n';)
+for (k = 0; semi_buf[k] != '\n'; k++)
 {
-while (!isdigit(semi_buf[k]) && semi_buf[k] != '-')
-k++;
+if (!isdigit(semi_buf[k]) && semi_buf[k] != '-')
+continue;
+else
+{
 t = 1;
 tmp = k;
 while (isdigit(semi_buf[tmp]))
@@ -174,6 +168,7 @@ while (isdigit(semi_buf[tmp]))
 t++;
 tmp++;
 }
+
 op_int = malloc(sizeof(*op_int) * t);
 if (op_int == NULL)
 {
@@ -187,15 +182,63 @@ op_int[t] = semi_buf[k];
 t++;
 k++;
 }
-if (semi_buf[k] != ' ' && semi_buf[k] != '\n')
-{
-fprintf(stderr, "L%d: usage: push integer\n", line_no);
-exit(EXIT_FAILURE);
-}
 op_int[t] = '\0';
 n = atoi(op_int);
 free(op_int);
-push(&stack_head, n);
-}
 return (n);
 }
+}
+return (-1);
+}
+
+
+/**
+ *push - adds a node to the beginning of the stack
+ *@stack_head: address of stack's head
+ *@n: value at node
+ *Return: void
+ */
+void push(stack_t **stack_head, int n)
+{
+int r __attribute__((unused));
+stack_t *lp;
+lp = malloc(sizeof(*lp));
+if (lp == NULL)
+{
+fprintf(stderr, "Error: malloc failed");
+exit(96);
+}
+lp->n = n;
+lp->next = *stack_head;
+lp->prev = NULL;
+if (*stack_head == NULL)
+*stack_head = lp;
+else
+{
+(*stack_head)->prev = lp;
+*stack_head = lp;
+}
+return;
+}
+
+/**
+ *pall - prints out all elements in the stack
+ *@stack_head: address of the head of the stack
+ *Return: void
+ */
+void pall(stack_t *stack_head)
+{
+stack_t *lp;
+if (stack_head == NULL)
+return;
+lp = stack_head;
+while (stack_head != NULL)
+{
+stack_head = lp->next;
+printf("%d\n", lp->n);
+lp = stack_head;
+}
+return;
+}
+
+
