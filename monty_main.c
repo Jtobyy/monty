@@ -13,7 +13,7 @@ int f;
 int c;
 if (argc != 2)
 {
-write(STDERR_FILENO, "USAGE: monty file\n", 19);
+write(STDERR_FILENO, "USAGE: monty file\n", 18);
 exit(EXIT_FAILURE);
 }
 monty_file = argv[1];
