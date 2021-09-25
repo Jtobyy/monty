@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int line_no = 1;
+int line_no = 0;
 
 /**
  * pp - extracts instructions from file
