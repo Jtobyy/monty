@@ -169,6 +169,11 @@ while (!isdigit(semi_buf[k]) && semi_buf[k] != '-')
 k++;
 t = 1;
 tmp = k;
+if (semi_buf[tmp] == '-' && isdigit(semi_buf[tmp + 1]))
+{
+t++;
+tmp++;
+}
 while (isdigit(semi_buf[tmp]))
 {
 t++;
@@ -181,6 +186,12 @@ fprintf(stderr, "Error: malloc failed\n");
 exit(EXIT_FAILURE);
 }
 t = 0;
+if (semi_buf[k] == '-')
+{
+op_int[t] = semi_buf[k];
+t++;
+k++;
+}
 while (isdigit(semi_buf[k]))
 {
 op_int[t] = semi_buf[k];
