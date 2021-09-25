@@ -89,7 +89,7 @@ free(semi_buf);
 free(opcode);
 free_stack_t(stack_head);
 fprintf(stderr, "L%d: usage: push integer\n", line_no);
-exit(EXIT_FAILURE); 
+exit(EXIT_FAILURE);
 }
 free(semi_buf);
 free(opcode);
@@ -112,7 +112,7 @@ return;
 /**
  *get_opcode - gets opcode for each line
  *@semi_buf: current line string
- *return: pointer to opcode
+ *Return: pointer to opcode
  */
 char *get_opcode(char *semi_buf)
 {

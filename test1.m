@@ -1,4 +1,4 @@
-           push -1024
+                                                                          push -1024
 	   push       23      
      pall
 push 84

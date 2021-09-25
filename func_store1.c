@@ -51,6 +51,8 @@ return;
 
 /**
  *pint - prints the value at the top of the stack
+ *@stack_head: address of the head of the stack
+ *Return: void
  *
  */
 void pint(stack_t *stack_head)

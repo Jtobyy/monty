@@ -24,7 +24,7 @@ if (monty_file[len - 2] != '.' && monty_file[len - 1] != 'm')
 {
 fprintf(stderr, "Error: Can't open file %s\n", monty_file);
 exit(EXIT_FAILURE);
-}   
+}
 f = open(monty_file, O_RDONLY);
 if (f == -1)
 {
