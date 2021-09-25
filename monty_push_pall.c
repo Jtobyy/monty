@@ -122,7 +122,7 @@ int tmp;
 char *opcode;
 for (k = 0; semi_buf[k] != '\n'; k++)
 {
-while (semi_buf[k] == ' ')
+while (semi_buf[k] == ' ' || semi_buf[k] == '\t')
 k++;
 t = 1;
 tmp = k;
@@ -198,7 +198,7 @@ op_int[t] = semi_buf[k];
 t++;
 k++;
 }
-if (semi_buf[k] != ' ' && semi_buf[k] != '\n')
+if (semi_buf[k] != ' ' && semi_buf[k] != '\n' && semi_buf[k] == '\t')
 {
 fprintf(stderr, "L%d: usage: push integer\n", line_no);
 exit(EXIT_FAILURE);
