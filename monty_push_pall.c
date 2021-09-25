@@ -1,5 +1,7 @@
 #include "monty.h"
 
+int line_no = 1;
+
 /**
  * pp - extracts instructions from file
  *@fd: file descriptor of file
@@ -13,7 +15,6 @@ int k;
 int n;
 int fd_count;
 ssize_t r;
-int line_no = 1;
 char *buf = NULL;
 char *semi_buf = NULL;
 char *opcode = NULL;
@@ -62,22 +63,22 @@ semi_buf[k] = '\n';
 
 /* get opcode for each line from file */
 opcode = get_opcode(semi_buf);
- 
-if (strncmp(opcode, "pall", 4) == 0)
+
+if (strcmp(opcode, "pall") == 0)
 {
 pall(stack_head);
 free(semi_buf);
 free(opcode);
 continue;
 }
-else if (strncmp(opcode, "pint", 4) == 0)
+else if (strcmp(opcode, "pint") == 0)
 {
 pint(stack_head);
 free(semi_buf);
 free(opcode);
 continue;
 }
-else if (strncmp(opcode, "push", 4) == 0)
+else if (strcmp(opcode, "push") == 0)
 {
 /* get int(if any) for each line from file */
 n = get_op_int(semi_buf);
@@ -187,6 +188,11 @@ while (isdigit(semi_buf[k]))
 op_int[t] = semi_buf[k];
 t++;
 k++;
+}
+if (semi_buf[k] != ' ' && semi_buf[k] != '\n')
+{
+fprintf(stderr, "L%d: usage: push integer\n", line_no);
+exit(EXIT_FAILURE);
 }
 op_int[t] = '\0';
 n = atoi(op_int);
