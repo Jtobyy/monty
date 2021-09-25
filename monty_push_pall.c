@@ -198,11 +198,11 @@ op_int[t] = semi_buf[k];
 t++;
 k++;
 }
-/**if (semi_buf[k] != ' ' && semi_buf[k] != '\n')
+if (semi_buf[k] != ' ' && semi_buf[k] != '\n')
 {
 fprintf(stderr, "L%d: usage: push integer\n", line_no);
 exit(EXIT_FAILURE);
-}*/
+}
 op_int[t] = '\0';
 n = atoi(op_int);
 free(op_int);
