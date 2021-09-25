@@ -1,3 +1,3 @@
-push -1024
-push 23a
-pall
+           push -1024
+   push       23a      
+     pall

@@ -207,7 +207,6 @@ op_int[t] = '\0';
 n = atoi(op_int);
 free(op_int);
 push(&stack_head, n);
-if (!isdigit(semi_buf[k]))
 break;
 }
 return (n);
