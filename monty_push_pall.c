@@ -96,11 +96,11 @@ free(opcode);
 }
 else
 {
+fprintf(stderr, "L%d: unknown instruction %s\n", line_no, opcode);
 free(buf);
 free(semi_buf);
 free(opcode);
 free_stack_t(stack_head);
-fprintf(stderr, "L%d: unknown instruction %s\n", line_no, opcode);
 exit(EXIT_FAILURE);
 }
 }
