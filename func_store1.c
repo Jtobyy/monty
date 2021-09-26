@@ -98,13 +98,13 @@ stack_t *swap(stack_t *head)
 {
 stack_t *tmp1;
 stack_t *tmp2;
-if (stack_head == NULL)
-{
-fprintf(stderr, "L%d: can't pop an empty stack\n", line_no);
-exit(EXIT_FAILURE);
-}
 tmp1 = head;
 tmp2 = head->next;
+if (tmp1 == NULL || tmp2 == NULL)
+{
+fprintf(stderr, "L%d: can't swap, stack to short\n", line_no);
+exit(EXIT_FAILURE);
+}
 (tmp2->next)->prev = tmp1;
 tmp1->next = tmp2->next;
 tmp1->prev = tmp2;
