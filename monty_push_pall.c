@@ -172,7 +172,7 @@ continue;
 
 else
 {
-fprintf(stderr, "L%d: unknown instruction %s\n", line_no, opcode);
+fprintf(stderr, "L%d: unknown instruction%s\n", line_no, opcode);
 free(buf);
 free(semi_buf);
 free(opcode);
