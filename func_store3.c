@@ -62,11 +62,6 @@ return;
  */
 void pstr(stack_t *head)
 {
-if (head == NULL)
-{
-fprintf(stderr, "L%d: can't pchar, stack empty\n", line_no);
-exit(EXIT_FAILURE);
-}
 while (head != NULL && head->n != 0)
 {
 if (head->n < 65 || head->n > 122 || (head->n >= 91 && head->n <= 96))

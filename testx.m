@@ -1,2 +1,1 @@
-push 324a
-pall
+pstr
