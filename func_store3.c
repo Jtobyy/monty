@@ -12,14 +12,14 @@ stack_t *mod_(stack_t *head)
 stack_t *tmp1;
 stack_t *tmp2;
 int mod;
-tmp1 = head;
-tmp2 = head->next;
-if (tmp1 == NULL || tmp2 == NULL)
+if (head == NULL || head->next == NULL)
 {
-fprintf(stderr, "L%d: can't mod, stack to short\n", line_no);
+fprintf(stderr, "L%d: can't mod, stack too short\n", line_no);
 exit(EXIT_FAILURE);
 }
-else if (tmp1->n == 0)
+tmp1 = head;
+tmp2 = head->next;
+if (tmp1->n == 0)
 {
 fprintf(stderr, "L%d: division by zero\n", line_no);
 exit(EXIT_FAILURE);

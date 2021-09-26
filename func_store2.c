@@ -14,13 +14,13 @@ stack_t *add(stack_t *head)
 stack_t *tmp1;
 stack_t *tmp2;
 int sum;
-tmp1 = head;
-tmp2 = head->next;
-if (tmp1 == NULL || tmp2 == NULL)
+if (head == NULL || head->next == NULL)
 {
-fprintf(stderr, "L%d: can't add, stack to short\n", line_no);
+fprintf(stderr, "L%d: can't add, stack too short\n", line_no);
 exit(EXIT_FAILURE);
 }
+tmp1 = head;
+tmp2 = head->next;
 sum = tmp1->n + tmp2->n;
 tmp2->n = sum;
 head = pop(head);
@@ -50,13 +50,13 @@ stack_t *sub(stack_t *head)
 stack_t *tmp1;
 stack_t *tmp2;
 int diff;
-tmp1 = head;
-tmp2 = head->next;
-if (tmp1 == NULL || tmp2 == NULL)
+if (head == NULL || head->next == NULL)
 {
-fprintf(stderr, "L%d: can't sub, stack to short\n", line_no);
+fprintf(stderr, "L%d: can't sub, stack too short\n", line_no);
 exit(EXIT_FAILURE);
 }
+tmp1 = head;
+tmp2 = head->next;
 diff = tmp2->n - tmp1->n;
 tmp2->n = diff;
 head = pop(head);
@@ -78,14 +78,14 @@ stack_t *div_(stack_t *head)
 stack_t *tmp1;
 stack_t *tmp2;
 int quo;
-tmp1 = head;
-tmp2 = head->next;
-if (tmp1 == NULL || tmp2 == NULL)
+if (head == NULL || head->next == NULL)
 {
-fprintf(stderr, "L%d: can't div, stack to short\n", line_no);
+fprintf(stderr, "L%d: can't div, stack too short\n", line_no);
 exit(EXIT_FAILURE);
 }
-else if (tmp1->n == 0)
+tmp1 = head;
+tmp2 = head->next;
+if (tmp1->n == 0)
 {
 fprintf(stderr, "L%d: division by zero\n", line_no);
 exit(EXIT_FAILURE);
@@ -108,13 +108,13 @@ stack_t *mul_(stack_t *head)
 stack_t *tmp1;
 stack_t *tmp2;
 int prod;
-tmp1 = head;
-tmp2 = head->next;
-if (tmp1 == NULL || tmp2 == NULL)
+if (head == NULL || head->next == NULL)
 {
-fprintf(stderr, "L%d: can't mul, stack to short\n", line_no);
+fprintf(stderr, "L%d: can't mul, stack too short\n", line_no);
 exit(EXIT_FAILURE);
 }
+tmp1 = head;
+tmp2 = head->next;
 prod = tmp2->n * tmp1->n;
 tmp2->n = prod;
 head = pop(head);

@@ -98,18 +98,28 @@ stack_t *swap(stack_t *head)
 {
 stack_t *tmp1;
 stack_t *tmp2;
-tmp1 = head;
-tmp2 = head->next;
-if (tmp1 == NULL || tmp2 == NULL)
+if (head == NULL || head->next == NULL)
 {
-fprintf(stderr, "L%d: can't swap, stack to short\n", line_no);
+fprintf(stderr, "L%d: can't swap, stack too short\n", line_no);
 exit(EXIT_FAILURE);
 }
+tmp1 = head;
+tmp2 = head->next;
+if (tmp2->next != NULL)
+{
 (tmp2->next)->prev = tmp1;
 tmp1->next = tmp2->next;
 tmp1->prev = tmp2;
 tmp2->next = tmp1;
 tmp2->prev = NULL;
+}
+else
+{
+tmp1->next = NULL;
+tmp1->prev = tmp2;
+tmp2->next = tmp1;
+tmp2->prev = NULL;
+}
 head = tmp2;
 return (head);
 }
