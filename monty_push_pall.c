@@ -78,6 +78,13 @@ free(semi_buf);
 free(opcode);
 continue;
 }
+else if (strcmp(opcode, "pop") == 0)
+{
+stack_head = pop(stack_head);
+free(semi_buf);
+free(opcode);
+continue;
+}
 else if (strcmp(opcode, "push") == 0)
 {
 /* get int(if any) for each line from file */
