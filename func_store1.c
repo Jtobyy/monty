@@ -68,7 +68,7 @@ return;
 
 /**
  *pop - removes the value at the top of the stack
- *@stack_head: address of the head of the stack
+ *@head: address of the head of the stack
  *Return: The new header of the stacks
  *
  */
@@ -88,7 +88,7 @@ return (head);
 
 /**
  *swap - swaps the top two elements of a stack
- *@stack_head: address of the head of the stack
+ *@head: address of the head of the stack
  *Return: the new header of the stack
  *It is always a good idea to return the current header
  *after making any changes to a linked list. This avoids errors
