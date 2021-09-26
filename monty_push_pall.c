@@ -61,6 +61,11 @@ for (j = i, k = 0; buf[j] != '\n'; j++, k++)
 semi_buf[k] = buf[j];
 semi_buf[k] = '\n';
 
+if (semi_buf[0] == '#')
+{
+free(semi_buf);
+continue;
+}
 /* get opcode for each line from file */
 opcode = get_opcode(semi_buf);
 
@@ -125,6 +130,27 @@ continue;
 else if (strcmp(opcode, "sub") == 0)
 {
 stack_head = sub(stack_head);
+free(semi_buf);
+free(opcode);
+continue;
+}
+else if (strcmp(opcode, "div") == 0)
+{
+stack_head = div_(stack_head);
+free(semi_buf);
+free(opcode);
+continue;
+}
+else if (strcmp(opcode, "mul") == 0)
+{
+stack_head = mul_(stack_head);
+free(semi_buf);
+free(opcode);
+continue;
+}
+else if (strcmp(opcode, "mod") == 0)
+{
+stack_head = mod_(stack_head);
 free(semi_buf);
 free(opcode);
 continue;

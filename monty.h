@@ -53,6 +53,9 @@ stack_t *swap(stack_t *head);
 stack_t *add(stack_t *head);
 void nop(void);
 stack_t *sub(stack_t *head);
+stack_t *div_(stack_t *head);
+stack_t *mul_(stack_t *head);
+stack_t *mod_(stack_t *head);
 
 extern int line_no;
 extern stack_t *stack_head;
