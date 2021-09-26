@@ -13,7 +13,7 @@ void pp(int fd)
 int i;
 int j;
 int k;
-int n;
+int n __attribute__((unused));
 int fd_count;
 ssize_t r;
 char *buf = NULL;
@@ -94,15 +94,6 @@ else if (strcmp(opcode, "push") == 0)
 {
 /* get int(if any) for each line from file */
 n = get_op_int(semi_buf);
-if (n == -1)
-{
-free(buf);
-free(semi_buf);
-free(opcode);
-free_stack_t(stack_head);
-fprintf(stderr, "L%d: usage: push integer\n", line_no);
-exit(EXIT_FAILURE);
-}
 free(semi_buf);
 free(opcode);
 }

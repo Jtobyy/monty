@@ -1,10 +1,9 @@
-push 70
-pint
-push 80
-pint
-push 78
-pint
+push -1
+push 2
+push 3
 pall
 # this is a comment
 pall
-pstr
+# this is a comment
+# this is a comment
+# this is a comment
