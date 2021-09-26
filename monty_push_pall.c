@@ -101,6 +101,13 @@ exit(EXIT_FAILURE);
 free(semi_buf);
 free(opcode);
 }
+else if (strcmp(opcode, "swap") == 0)
+{
+stack_head = swap(stack_head);
+free(semi_buf);
+free(opcode);
+continue;
+}
 else
 {
 fprintf(stderr, "L%d: unknown instruction %s\n", line_no, opcode);

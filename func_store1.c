@@ -69,7 +69,7 @@ return;
 /**
  *pop - removes the value at the top of the stack
  *@stack_head: address of the head of the stack
- *Return: void
+ *Return: The new header of the stacks
  *
  */
 stack_t *pop(stack_t *head)
@@ -83,5 +83,33 @@ exit(EXIT_FAILURE);
 lp = head;
 head = lp->next;
 free(lp);
+return (head);
+}
+
+/**
+ *swap - swaps the top two elements of a stack
+ *@stack_head: address of the head of the stack
+ *Return: the new header of the stack
+ *It is always a good idea to return the current header
+ *after making any changes to a linked list. This avoids errors
+ *
+ */
+stack_t *swap(stack_t *head)
+{
+stack_t *tmp1;
+stack_t *tmp2;
+if (stack_head == NULL)
+{
+fprintf(stderr, "L%d: can't pop an empty stack\n", line_no);
+exit(EXIT_FAILURE);
+}
+tmp1 = head;
+tmp2 = head->next;
+(tmp2->next)->prev = tmp1;
+tmp1->next = tmp2->next;
+tmp1->prev = tmp2;
+tmp2->next = tmp1;
+tmp2->prev = NULL;
+head = tmp2;
 return (head);
 }

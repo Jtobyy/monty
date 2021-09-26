@@ -49,6 +49,7 @@ int get_op_int(char *semi_buf);
 char *get_opcode(char *semi_buf);
 void pint(stack_t *stack_head);
 stack_t *pop(stack_t *stack_head);
+stack_t *swap(stack_t *head);
 
 extern int line_no;
 extern stack_t *stack_head;
