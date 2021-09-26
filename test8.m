@@ -6,6 +6,5 @@ push 78
 pint
 pall
 # this is a comment
-pop
 pall
-pchar
+pstr
