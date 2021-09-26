@@ -51,6 +51,7 @@ void pint(stack_t *stack_head);
 stack_t *pop(stack_t *stack_head);
 stack_t *swap(stack_t *head);
 stack_t *add(stack_t *head);
+void nop(void);
 
 extern int line_no;
 extern stack_t *stack_head;

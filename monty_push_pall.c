@@ -115,6 +115,13 @@ free(semi_buf);
 free(opcode);
 continue;
 }
+else if (strcmp(opcode, "nop") == 0)
+{
+nop();
+free(semi_buf);
+free(opcode);
+continue;
+}   
 else
 {
 fprintf(stderr, "L%d: unknown instruction %s\n", line_no, opcode);
