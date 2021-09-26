@@ -61,15 +61,17 @@ for (j = i, k = 0; buf[j] != '\n'; j++, k++)
 semi_buf[k] = buf[j];
 semi_buf[k] = '\n';
 
-if (semi_buf[0] == '#')
-{
-free(semi_buf);
-continue;
-}
 /* get opcode for each line from file */
 opcode = get_opcode(semi_buf);
 
-if (strcmp(opcode, "pall") == 0)
+if (opcode[0] == '#')
+{
+nop();
+free(semi_buf);
+free(opcode);
+continue;
+}
+else if (strcmp(opcode, "pall") == 0)
 {
 pall(stack_head);
 free(semi_buf);
@@ -160,7 +162,6 @@ free(semi_buf);
 free(opcode);
 continue;
 }
-
 else
 {
 fprintf(stderr, "L%d: unknown instruction %s\n", line_no, opcode);
@@ -193,7 +194,7 @@ while (semi_buf[k] == ' ' || semi_buf[k] == '\t')
 k++;
 t = 1;
 tmp = k;
-while (isalpha(semi_buf[tmp]))
+while (isalpha(semi_buf[tmp]) || semi_buf[tmp] == '#')
 {
 t++;
 tmp++;
@@ -205,7 +206,7 @@ fprintf(stderr, "Error: malloc failed\n");
 exit(EXIT_FAILURE);
 }
 t = 0;
-while (isalpha(semi_buf[k]))
+while (isalpha(semi_buf[k]) || semi_buf[k] == '#')
 {
 opcode[t] = semi_buf[k];
 t++;
