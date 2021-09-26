@@ -64,7 +64,7 @@ return (head);
 }
 
 /**
- *div - divides the second top element of a stack
+ *div_ - divides the second top element of a stack
  *by the top element of the stack
  *and stores the result in the second top element
  *@head: address of the head of the stack
@@ -97,7 +97,7 @@ return (head);
 }
 
 /**
- *mul - multiplies the second top element of a stack
+ *mul_ - multiplies the second top element of a stack
  *with the top element of the stack
  *and stores the result in the second top element
  *@head: address of the head of the stack

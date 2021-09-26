@@ -1,10 +1,11 @@
-push 1
+push 70
 pint
-push 2
+push 80
 pint
-push 3
+push 78
 pint
 pall
 # this is a comment
 pop
 pall
+pchar
