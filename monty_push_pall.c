@@ -189,7 +189,6 @@ else if (strcmp(opcode, "queue") == 0)
 {
 if (queueorstack != 1)
 queueorstack++;
-stack_head = rotr(stack_head);
 free(semi_buf);
 free(opcode);
 continue;
