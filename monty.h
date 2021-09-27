@@ -59,6 +59,7 @@ stack_t *mod_(stack_t *head);
 void pchar_(stack_t *head);
 void pstr(stack_t *head);
 stack_t *rotl(stack_t *head);
+stack_t *rotr(stack_t *head);
 
 extern int line_no;
 extern stack_t *stack_head;
