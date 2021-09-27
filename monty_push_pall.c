@@ -2,6 +2,7 @@
 
 int line_no = 1;
 stack_t *stack_head = NULL;
+int queueorstack = 0;
 
 /**
  * pp - extracts instructions from file
@@ -178,12 +179,16 @@ continue;
 }
 else if (strcmp(opcode, "stack") == 0)
 {
+if (queueorstack != 0)
+queueorstack--;
 free(semi_buf);
 free(opcode);
 continue;
 }
 else if (strcmp(opcode, "queue") == 0)
 {
+if (queueorstack != 1)
+queueorstack++;
 stack_head = rotr(stack_head);
 free(semi_buf);
 free(opcode);

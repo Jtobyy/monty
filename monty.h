@@ -63,4 +63,5 @@ stack_t *rotr(stack_t *head);
 
 extern int line_no;
 extern stack_t *stack_head;
+extern int queueorstack;
 #endif

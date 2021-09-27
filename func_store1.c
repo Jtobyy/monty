@@ -10,12 +10,15 @@ void push(stack_t **stack_head, int n)
 {
 int r __attribute__((unused));
 stack_t *lp;
+stack_t *tmp;
 lp = malloc(sizeof(*lp));
 if (lp == NULL)
 {
 fprintf(stderr, "Error: malloc failed");
 exit(96);
 }
+if (queueorstack != 1)
+{
 lp->n = n;
 lp->next = *stack_head;
 lp->prev = NULL;
@@ -25,6 +28,35 @@ else
 {
 (*stack_head)->prev = lp;
 *stack_head = lp;
+}
+}
+else
+{
+lp->n = n;
+if (*stack_head == NULL)
+*stack_head = lp;
+else
+{
+lp->next = NULL;
+if ((**stack_head).next == NULL)
+{
+lp->prev = *stack_head;
+(**stack_head).next = lp;
+}
+else
+{
+tmp = (**stack_head).next;
+while (tmp != NULL)
+{
+if (tmp->next != NULL)
+tmp = tmp->next;
+else
+break;
+}
+lp->prev = tmp;
+tmp->next = lp;
+}
+}
 }
 return;
 }
