@@ -86,6 +86,31 @@ stack_t *sp;
 if (head == NULL)
 return head;
 tmp = head->next;
+while (tmp != NULL)
+{
+sp = tmp;
+tmp = tmp->next;
+}
+tmp = head->next;
+sp->next = head;
+head->next = NULL;
+head->prev = sp;
+return (tmp);
+}
+
+/**
+ * reverse - rotates the stack
+ * 
+ * @head: address of the head of the stack
+ * Return: new head
+ */
+stack_t *reverse(stack_t *head)
+{
+stack_t *tmp;
+stack_t *sp;
+if (head == NULL)
+return head;
+tmp = head->next;
 head->next = NULL;
 head->prev = tmp;
 tmp->prev = tmp->next;
