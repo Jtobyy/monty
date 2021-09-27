@@ -72,3 +72,30 @@ head = head->next;
 putchar('\n');
 return;
 }
+
+/**
+ * rotl - rotates the stack to the top
+ * 
+ * @head: address of the head of the stack
+ * Return: new head
+ */
+stack_t *rotl(stack_t *head)
+{
+stack_t *tmp;
+stack_t *sp;
+if (head == NULL)
+return head;
+tmp = head->next;
+head->next = NULL;
+head->prev = tmp;
+tmp->prev = tmp->next;
+tmp->next = head;
+while (tmp->prev != NULL)
+{
+sp = tmp;
+tmp = tmp->prev;
+tmp->prev = tmp->next;
+tmp->next = sp;
+}
+return (tmp);
+}

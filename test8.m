@@ -1,9 +1,8 @@
 push -1
 push 2
-push 3
+push 5
+push 4
+push 9
 pall
-     # this is a comment
+rotl
 pall
-# this is a comment
-# this is a comment
-# this is a comment
