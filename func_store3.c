@@ -83,7 +83,7 @@ stack_t *rotl(stack_t *head)
 {
 stack_t *tmp;
 stack_t *sp;
-if (head == NULL)
+if (head == NULL || head->next == NULL)
 return head;
 tmp = head->next;
 while (tmp != NULL)

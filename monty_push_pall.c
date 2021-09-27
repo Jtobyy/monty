@@ -176,6 +176,20 @@ free(semi_buf);
 free(opcode);
 continue;
 }
+else if (strcmp(opcode, "stack") == 0)
+{
+free(semi_buf);
+free(opcode);
+continue;
+}
+else if (strcmp(opcode, "queue") == 0)
+{
+stack_head = rotr(stack_head);
+free(semi_buf);
+free(opcode);
+continue;
+}
+
 else
 {
 fprintf(stderr, "L%d: unknown instruction %s\n", line_no, opcode);
